@@ -73,7 +73,13 @@
     transform: translateY(20px);
     transition: opacity 0.5s, transform 0.5s;
 }
+.hidden {
+    opacity: 0;
+}
 
+.animate__animated {
+    opacity: 1; /* Đảm bảo phần tử có thể hiển thị khi áp dụng hoạt ảnh */
+}
 .show {
     opacity: 1;
     transform: translateY(0);

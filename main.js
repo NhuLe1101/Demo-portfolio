@@ -131,22 +131,17 @@ function showPage() {
         var observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.2
         };
 
         var observer = new IntersectionObserver(function (entries, observer) {
             entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
+                    // Thêm class 'show' vào các phần tử khi chúng hiện trong viewport
                     $(entry.target).addClass('show');
-                    observer.unobserve(entry.target);
 
-                    // Nếu là portfolioContainer thì khởi tạo Isotope
-                    if ($(entry.target).is($portfolioContainer)) {
-                        $portfolioContainer.isotope({
-                            itemSelector: '.portfolio-item',
-                            layoutMode: 'fitRows'
-                        });  
-                    }
+                    // Ngừng theo dõi các phần tử này
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -154,6 +149,17 @@ function showPage() {
         $hiddenElements.each(function () {
             observer.observe(this);
         });
+
+        new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    $(entry.target).isotope({
+                        itemSelector: '.portfolio-item',
+                        layoutMode: 'fitRows',
+                    });
+                }
+            });
+        }, observerOptions).observe($portfolioContainer[0])
         // Filter items on click
         $('#portfolio-flters li').on('click', function () {
             $('#portfolio-flters li').removeClass('active');
@@ -162,6 +168,7 @@ function showPage() {
             var filterValue = $(this).attr('data-filter');
             $portfolioContainer.isotope({ filter: filterValue });
         });
+        
     });
 
 })(jQuery);
