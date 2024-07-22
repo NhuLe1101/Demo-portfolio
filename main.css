@@ -447,7 +447,12 @@
 .team-item:hover .team-text div {
     margin-left: 30px;
 }
-
+.info-member{
+    text-align: left;
+}
+.full-name{
+    font-weight: 700 !important; 
+}
 /* TestimonialPage */
 .testimonial-left,
 .testimonial-right {

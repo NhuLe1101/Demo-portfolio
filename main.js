@@ -126,39 +126,39 @@ function showPage() {
         });
 
         var $hiddenElements = $('.hidden');
-    var $portfolioContainer = $('.portfolio-container');
+        var $portfolioContainer = $('.portfolio-container');
 
-    var observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+        var observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-    var observer = new IntersectionObserver(function(entries, observer) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                $(entry.target).addClass('show');
-                observer.unobserve(entry.target);
+        var observer = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('show');
+                    observer.unobserve(entry.target);
 
-                // Nếu là portfolioContainer thì khởi tạo Isotope
-                if ($(entry.target).is($portfolioContainer)) {
-                    $portfolioContainer.isotope({
-                        itemSelector: '.portfolio-item',
-                        layoutMode: 'fitRows'
-                    });
+                    // Nếu là portfolioContainer thì khởi tạo Isotope
+                    if ($(entry.target).is($portfolioContainer)) {
+                        $portfolioContainer.isotope({
+                            itemSelector: '.portfolio-item',
+                            layoutMode: 'fitRows'
+                        });  
+                    }
                 }
-            }
-        });
-    }, observerOptions);
+            });
+        }, observerOptions);
 
-    $hiddenElements.each(function() {
-        observer.observe(this);
-    });
+        $hiddenElements.each(function () {
+            observer.observe(this);
+        });
         // Filter items on click
-        $('#portfolio-flters li').on('click', function() {
+        $('#portfolio-flters li').on('click', function () {
             $('#portfolio-flters li').removeClass('active');
             $(this).addClass('active');
-    
+
             var filterValue = $(this).attr('data-filter');
             $portfolioContainer.isotope({ filter: filterValue });
         });
