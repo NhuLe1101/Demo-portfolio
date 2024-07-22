@@ -124,7 +124,7 @@ function showPage() {
             autoplay: true,
             autoplaySpeed: 5000
         });
-
+        // Project filter and sort by isotope
         var $hiddenElements = $('.hidden');
         var $portfolioContainer = $('.portfolio-container');
 

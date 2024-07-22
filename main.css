@@ -4,6 +4,7 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     line-height: 1.5;
+    /* color: #12141D; */
 }
 
 .spinner-border {
@@ -127,10 +128,10 @@
 
 .text-name {
     margin-bottom: 1rem;
-    font-size: 67px;
-    font-weight: 700;
     text-align: left;
-
+    font-size: calc(1.525rem + 3.3vw);
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .animate-typing {
@@ -139,13 +140,20 @@
 
 .d-none {
     display: none !important;
+
 }
 
 .typed-text-output {
     font-size: 32px;
     font-weight: 500;
 }
-
+.text-name{
+    font-size: 64px;
+    font-weight: 700 !important;
+}
+.type-text{
+    font-weight: 1000 !important;
+}
 .type-cursor {
     font-size: 26px;
     animation: blink 0.7s step-end infinite;
@@ -167,6 +175,7 @@
     background-color: #6244c5 !important;
     color: white !important;
     font-weight: 600 !important;
+    border-radius: 10px !important;
 }
 
 .btn:hover {
